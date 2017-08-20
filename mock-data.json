@@ -1,0 +1,8 @@
+
+
+{
+  "posts": [
+      { "id": 1, "activityName": "dining"  },
+           { "id": 2, "activityName": "movie"  }
+	     ]  
+	     }
