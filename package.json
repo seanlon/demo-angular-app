@@ -7,9 +7,14 @@
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
-    "lint": "ng lint",
-    "e2e": "ng e2e"
+    "lint": " ng lint ",
+    "e2e": "ng e2e" ,
+    "precommit-check": "echo \"start lint\" && npm run lint  && exit 0"
   },
+   "pre-commit": [
+    "precommit-check" ,
+    "e2e"
+  ],
   "private": true,
   "dependencies": {
     "@angular/common": "^2.4.0",
@@ -35,9 +40,10 @@
     "karma": "~1.4.1",
     "karma-chrome-launcher": "~2.0.0",
     "karma-cli": "~1.0.1",
+    "karma-coverage-istanbul-reporter": "^0.2.0",
     "karma-jasmine": "~1.1.0",
     "karma-jasmine-html-reporter": "^0.2.2",
-    "karma-coverage-istanbul-reporter": "^0.2.0",
+    "pre-commit": "^1.2.2",
     "protractor": "~5.1.0",
     "ts-node": "~2.0.0",
     "tslint": "~4.5.0",
