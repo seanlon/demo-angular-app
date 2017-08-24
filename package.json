@@ -9,7 +9,10 @@
     "test": "ng test",
     "lint": " ng lint ",
     "e2e": "ng e2e" ,
-    "precommit-check": "echo \"start lint\" && npm run lint  && exit 0"
+    "precommit-check": "echo \"start lint\" && npm run lint  && exit 0",
+
+    "dev":"node build-configuration/build-config.js dev && ng build",
+    "prod":"node build-configuration/build-config.js prod && ng build "
   },
    "pre-commit": [
     "precommit-check" ,
