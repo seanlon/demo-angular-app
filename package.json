@@ -9,6 +9,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
+    "doc": "compodoc -p src/tsconfig.app.json && compodoc -s",
     "development" :" concurrently \"ng serve\" \"npm run mock-server\" ",
     "mock-server": "json-server mock-data.json --port 3010"
   },
