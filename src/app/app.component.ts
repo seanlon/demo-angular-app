@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Timeouter } from './decorator/timeout.method.decorator'
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app works!';
+
+  ngOnInit() {
+    this.doSomething()
+  }
+
+  @Timeouter(5000)
+  doSomething() {
+    alert('Method doSomething ');
+  }
 }
