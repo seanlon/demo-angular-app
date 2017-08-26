@@ -1,35 +1,31 @@
 import { Component } from '@angular/core';
-import { Timeouter } from './decorator/timeout.method.decorator'
-import { Logger } from './class/log.class'
-import { LogHelper } from './decorator/log.class.decorator'
-import { ReadOnly } from './decorator/readonly.property.decorator'
+import { ClassAbcDescriptor } from './decorator/class/ClassAbcDescriptor';
+import { MethodAbcDescriptor } from './decorator/method/MethodAbcDescriptor';
+import { PropertyAbcDescriptor } from './decorator/property/PropertyAbcDescriptor';
 
-@LogHelper("Yoo")
+//class-level
+@ClassAbcDescriptor({
+  anyProperty:"anyValue"
+})
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  @ReadOnly
-  title = 'app works!';
-  log: Logger;
+  
+  //property-level
+  @PropertyAbcDescriptor
+  title ;
 
-  constructor() {
-    // this.log = new Logger();
-  }
+  constructor() { }
 
-  ngOnInit() {
-    this.doSomething()
-    this.doSomethingElse('yes')
+  ngOnInit() { 
+    this.doNothing();
   }
 
-  @Timeouter(5000)
-  doSomething() {
-    alert('Method doSomething ');
-  }
-  doSomethingElse(paramString: string) {
-    alert('Method doSomethingElse ');
-    this.title = paramString
-  }
+  //method-level
+  @MethodAbcDescriptor('abc')
+  doNothing() { }
+
 }
