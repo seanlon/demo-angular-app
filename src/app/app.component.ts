@@ -1,11 +1,14 @@
 import { Component } from '@angular/core';
-import { ClassAbcDescriptor } from './decorator/class/ClassAbcDescriptor';
-import { MethodAbcDescriptor } from './decorator/method/MethodAbcDescriptor';
-import { PropertyAbcDescriptor } from './decorator/property/PropertyAbcDescriptor';
+import { ClassDiscountDescriptor } from './decorator/class/ClassDiscountDescriptor';
+import { MethodDiscountDescriptor } from './decorator/method/MethodDiscountDescriptor';
+import { PropertyDiscountDescriptor } from './decorator/property/PropertyDiscountDescriptor';
+import { HostListener } from '@angular/core';
+
 
 //class-level
-@ClassAbcDescriptor({
-  anyProperty:"anyValue"
+@ClassDiscountDescriptor({
+  allowGroup: "BEER",
+  allowRate: "25%"
 })
 @Component({
   selector: 'app-root',
@@ -13,19 +16,17 @@ import { PropertyAbcDescriptor } from './decorator/property/PropertyAbcDescripto
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  
+
   //property-level
-  @PropertyAbcDescriptor
-  title ;
+  @PropertyDiscountDescriptor
+  private discountItem; 
 
-  constructor() { }
-
-  ngOnInit() { 
-    this.doNothing();
-  }
+  constructor() { } 
+  ngOnInit() { }
 
   //method-level
-  @MethodAbcDescriptor('abc')
-  doNothing() { }
+  @HostListener('click', ['$event'])
+  @MethodDiscountDescriptor( {})
+  performClickHandler() { }
 
 }

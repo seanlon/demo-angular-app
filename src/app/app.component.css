@@ -1,0 +1,7 @@
+.select-drink{
+    border: red 1px dashed;
+    cursor:pointer; 
+}
+.select-drink.discount{
+    border: green 1px dashed;
+}
